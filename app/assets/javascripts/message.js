@@ -32,10 +32,10 @@ $(function(){
       contentType: false
     })
     .done(function(data){
-      console.log(data);
       var html = buildHTML(data);
       $('.messages').append(html)
-      $('.form__message').val('').reset()
+      $('.form__message').reset()
+      $('.messages').animate({scrollTop: $('messages')[0].scrollHeight}, 'fast');
     })
     .fail(function(){
       alert('error');
