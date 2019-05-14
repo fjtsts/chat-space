@@ -1,15 +1,25 @@
 $(function(){
   function buildHTML(message){
-    var html = `<p>
-                  <strong>
-                    <a href=/users/${message.user_id}>${message.user_name}</a>
-                    ：
-                  </strong>
-                  ${message.text}
-                </p>`
+    var imagehtml = message.image == null?"" : <img src="${message.image}"class="lower-message_image"></img>
+    var html = `<div class="message">
+                  <div class="upper-message">
+                    <div class="upper-message__user-name">
+                      ${messages.users.name}
+                    </div>
+                    <div class="upper-message__date">
+                      ${messages.created_at}
+                    </div>
+                  </div>
+                  <div class="lower-meesage">
+                    <p class="lower-message__content">
+                      ${messages.content}
+                    </p>
+                      ${messages.image}
+                  </div>
+                </div>`
     return html;
   }
-  $('#create__message').on('submit', function(e){
+  $('#new_message').on('submit', function(e){
     e.preventDefault();
     var formData = new FormData(this);
     var url = $(this).attr('action')
@@ -22,8 +32,10 @@ $(function(){
       contentType: false
     })
     .done(function(data){
+      console.log(data);
+      var html = buildHTML(data);
       $('.messages').append(html)
-      $('.textbox').val('')
+      $('.form__message').val('').reset()
     })
     .fail(function(){
       alert('error');
