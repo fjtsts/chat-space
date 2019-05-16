@@ -24,7 +24,6 @@
       %label.chat-group-form__label{for: "chat_group_チャットメンバー"} チャットメンバー
     .chat-group-form__field--right
 
-      -# = f.collection_check_boxes :user_ids, User.all, :id, :name
     #chat-group-users
       #group-user-ids.chat-group-user.clearfix
         %input{name: "chat_group[user_ids][]", type: "hidden", value: "= user.id"}/
