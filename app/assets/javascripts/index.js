@@ -19,14 +19,14 @@ $(function() {
         <p class="chat-group-user__name">${ current_user.name }</p>
       </div>`
     search_list.append(html);
+    return html;
   }
-
 
   function appendUserToMemberList(name, user_id) {
     var html = 
-      `<div class='chat-group-user clearfix js-chat-member' id='group-user-ids'>
-        <input name='group[user_ids][]' type='hidden' value=${ current_user.id }>
-        <p class='chat-group-user__name'>${ current_user.name }</p>
+      `<div class='chat-group-user clearfix js-chat-member' id='group-user-${ user_id }'>
+        <input name='group[user_ids][]' type='hidden' value=${ user_id }>
+        <p class='chat-group-user__name'>${ name }</p>
         <a class='user-search-remove chat-group-user__btn chat-group-user__btn--remove js-remove-btn'>削除</a>
       </div>`
 　　 member_list.append(html);
