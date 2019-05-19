@@ -58,7 +58,6 @@ $(function(){
     })
 
     .done(function(data){
-      console.log(data)
     data.forEach(function(message){
       if (message.id > last_message_id){
       var insertHTML = '';
