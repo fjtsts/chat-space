@@ -49,7 +49,6 @@ $(function(){
 
   var reloadMessages = function() {
     var last_message_id = $('.message').last().attr('data-message-id');
-// console.log(last_message_id);
     api_url = window.location.pathname + '/../api/messages';
     $.ajax({
       url: api_url,
@@ -57,7 +56,10 @@ $(function(){
       dataType: 'json',
       data: {id: last_message_id}
     })
+
     .done(function(data){
+      console.log(data)
+    data.forEach(function(message){
       if (message.id > last_message_id){
       var insertHTML = '';
       insertHTML = buildHTML(message);  
@@ -73,8 +75,4 @@ $(function(){
   };
 
   setInterval(reloadMessages, 5000);
-
-  // $('.form__message').on('keyup', function(){
-  //   reloadMessages();
-  // })
 });
