@@ -4,7 +4,7 @@ $(function(){
     if (message.image.url) {
       addImage = `<img src="${message.image.url}">`;
     }
-    var html = `<div class="message">
+    var html = `<div class="message" data-message-id="${message.id}">
                   <div class="upper-message">
                     <div class="upper-message__user-name">
                       ${message.user_name}
@@ -46,4 +46,35 @@ $(function(){
       alert('error');
     })
   })
+
+  var reloadMessages = function() {
+    var last_message_id = $('.message').last().attr('data-message-id');
+// console.log(last_message_id);
+    api_url = window.location.pathname + '/../api/messages';
+    $.ajax({
+      url: api_url,
+      type: 'get',
+      dataType: 'json',
+      data: {id: last_message_id}
+    })
+    .done(function(data){
+      if (message.id > last_message_id){
+      var insertHTML = '';
+      insertHTML = buildHTML(message);  
+      $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight}, 'fast');
+      $('.messages').append(insertHTML)
+      }
+      });
+    })
+
+    .fail(function(){
+      alert('error');
+    })
+  };
+
+  setInterval(reloadMessages, 5000);
+
+  // $('.form__message').on('keyup', function(){
+  //   reloadMessages();
+  // })
 });
