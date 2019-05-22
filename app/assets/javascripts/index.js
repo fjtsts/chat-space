@@ -9,8 +9,8 @@ $(function() {
           <p class="chat-group-user__name">${ user.name }</p>
           <a class="user-search-add chat-group-user__btn chat-group-user__btn--add" data-user-id="${ user.id }" data-user-name=${ user.name }>追加</a>
       </div>`
-　　 search_list.append(html);
-　　 return html;
+    search_list.append(html);
+    return html;
   }
 
   function appendNoUserToSearchList(user) {
@@ -29,7 +29,7 @@ $(function() {
         <p class='chat-group-user__name'>${ name }</p>
         <a class='user-search-remove chat-group-user__btn chat-group-user__btn--remove js-remove-btn'>削除</a>
       </div>`
-　　 member_list.append(html);
+    member_list.append(html);
   }
 
   $(function(){
@@ -44,6 +44,7 @@ $(function() {
       })
 
       .done(function(user) {
+        console.log(user)
         $("#user-search-result").empty();
           if (user.length !== 0) {
             user.forEach(function(user){
