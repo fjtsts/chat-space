@@ -67,7 +67,7 @@ $(function() {
         appendUserToMemberList(name, user_id);
       });
 
-　    $(document).on("click", '.user-search-remove', function() {
+      $(document).on("click", '.user-search-remove', function() {
         $(this).parent().remove();
       });
     });
