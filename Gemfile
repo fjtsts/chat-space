@@ -51,6 +51,10 @@ group :development, :test do
   gem 'capistrano3-unicorn'
 end
 
+group :production do
+  gem 'unicorn', '5.4.1'
+end
+
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem 'web-console', '>= 3.3.0'
@@ -73,7 +77,4 @@ gem 'compass-rails', '3.1.0'
 gem 'sprockets', '3.7.2'
 gem 'carrierwave'
 gem 'mini_magick'
-
-group :production do
-  gem 'unicorn', '5.4.1'
-end
+gem 'aws-sdk-s3'
