@@ -43,6 +43,22 @@ GEM
     airbrussh (1.3.1)
       sshkit (>= 1.6.1, != 1.7.0)
     arel (7.1.4)
+    aws-eventstream (1.1.1)
+    aws-partitions (1.458.0)
+    aws-sdk-core (3.114.0)
+      aws-eventstream (~> 1, >= 1.0.2)
+      aws-partitions (~> 1, >= 1.239.0)
+      aws-sigv4 (~> 1.1)
+      jmespath (~> 1.0)
+    aws-sdk-kms (1.43.0)
+      aws-sdk-core (~> 3, >= 3.112.0)
+      aws-sigv4 (~> 1.1)
+    aws-sdk-s3 (1.94.1)
+      aws-sdk-core (~> 3, >= 3.112.0)
+      aws-sdk-kms (~> 1)
+      aws-sigv4 (~> 1.1)
+    aws-sigv4 (1.2.3)
+      aws-eventstream (~> 1, >= 1.0.2)
     bcrypt (3.1.12)
     bindex (0.7.0)
     builder (3.2.3)
@@ -161,6 +177,7 @@ GEM
     ipaddress (0.8.3)
     jbuilder (2.9.1)
       activesupport (>= 4.2.0)
+    jmespath (1.4.0)
     jquery-rails (4.3.3)
       rails-dom-testing (>= 1, < 3)
       railties (>= 4.2.0)
@@ -197,7 +214,8 @@ GEM
     pry-rails (0.3.9)
       pry (>= 0.10.4)
     public_suffix (3.0.3)
-    puma (3.12.1)
+    puma (4.3.8)
+      nio4r (~> 2.0)
     rack (2.0.7)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -310,6 +328,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  aws-sdk-s3
   byebug
   capistrano
   capistrano-bundler
@@ -333,7 +352,7 @@ DEPENDENCIES
   mini_magick
   mysql2 (>= 0.3.18, < 0.6.0)
   pry-rails
-  puma (~> 3.0)
+  puma (~> 4.3)
   rails (~> 5.0.7, >= 5.0.7.2)
   rails-controller-testing
   rspec-rails (~> 3.5)
